@@ -1,75 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
     <link rel="stylesheet" href="css/addPropertyFormCss/addPropertyForm.css"/>
 </head>
 <body>
-<form action="" method="post" class="dark-matter">
-    <h1 style="font-family: Georgia" align="Center" color="White">
-        Seller Information
-    </h1>
-    <label>
-        <span>First Name :</span>
-        <input id="name" type="text" name="name" placeholder="Your Full Name" />
-    </label>
-    <label>
-        <span>Phone :</span>
-        <input id="phone" type="text" name="name" placeholder="Your Phone Number" />
-    </label>
-    <label>
-        <span>Your Email :</span>
-        <input id="email" type="email" name="email" placeholder="Valid Email Address" />
-    </label>
-    <br>
-    <br>
-    <br>
+<form action="#"th:action="@{/propertyAdded}" th:object="${property}"
+      method="post" class="dark-matter">
+
     <h1 style="font-family: Georgia" >
         Property Information
     </h1>
     <label>
         <span>Property Title :</span>
-        <input id="propTitle" type="text" name="name" placeholder="Home,Open Land,or Commercial " />
+        <input  type="text" th:field="*{title}" placeholder="Home,Open Land,or store " />
+    </label>
+    <label>
+        <span>Property Type :</span>
+        <input id="propType" type="text" th:field="*{type}" placeholder="resedential, aggrecultural, commercial  " />
+    </label>
+    <label>
+        <span>Size (square meter) :</span>
+        <input id="propSize" type="text" th:field="*{size}" placeholder="Size in Square meters " />
     </label>
 
+
     <label>
-        <span>Street Name :</span>
-        <input id="streetName" type="text" name="name" placeholder="Street number, name etc. " />
+        <span>Number on Street :</span>
+        <input id="houseNo" type="text"th:field="*{houseNo}" placeholder="Street number, name etc. " />
     </label>
     <label>
         <span>City :</span>
-        <input id="city" type="text" name="name" placeholder="Standerton " />
+        <input id="city" type="text"th:field="*{city}" placeholder="Standerton " />
     </label>
     <label>
         <span>Country :</span>
-        <input id="country" type="text" name="name" placeholder="South Africa" />
+        <input id="country" type="text" th:field="*{country}" placeholder="South Africa" />
     </label>
     <label>
         <span>Postal Code :</span>
-        <input id="postalCode" type="text" name="name" placeholder="2430" />
+        <input id="postalCode" type="text" th:field="*{postalCode}" placeholder="2430" />
     </label>
     <br>
     <label>
         <span>Add Images :</span>
-        <input type="file" name="img" multiple>
+        <input type="file" name="img" th:field="*{image}" multiple>
     </label>
 
 
     <label>
-        <span>Message :</span>
-        <textarea id="message" name="message" placeholder="Tell More about Property"></textarea>
+        <span>Got more Information? </span>
+        <textarea id="message" name="message" th:field="*{address}" placeholder="Tell More about Property"></textarea>
     </label>
-    <!--<label>-->
-        <!--<span>Subject :</span><select name="selection">-->
-        <!--<option value="Job Inquiry">Job Inquiry</option>-->
-        <!--<option value="General Question">General Question</option>-->
-    <!--</select>-->
-    <!--</label>-->
+
     <label>
         <span>&nbsp;</span>
-        <input type="button" class="button" value="Send" />
+        <input type="submit" class="button" value="Send" />
     </label>
 </form>
 </body>
